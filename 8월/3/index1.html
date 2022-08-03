@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>길연문제</title>
+    <title>화면에 “본인이름 입니다”를 출력한다.</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
+        <h1>{{name}}입니다</h1>
     </div>
     <script>
         new Vue({
             el: "#app",
             data() {
                 return {
-                    message: "hello vue!!",
+                    name: "박밍꼬",
                 }
             }
         })

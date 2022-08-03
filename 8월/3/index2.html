@@ -5,23 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기본 vue 만들기</title>
+    <title>문제1: vue의 cdn 방식을 사용해 "hello vue!!" 라는 메세지를 웹 사이트에 출력하시오. (이때 data는 객체가 아닌 함수의 형태이다.)</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <h1>{{name}}입니다</h1>
+        <h1>{{message}}</h1>
     </div>
     <script>
         new Vue({
             el: "#app",
-            // data: {
-            //     message: "hello vue!!",
-            // }
             data() {
                 return {
-                    name: "박소연",
+                    message: "hello vue!!",
                 }
             }
         })
