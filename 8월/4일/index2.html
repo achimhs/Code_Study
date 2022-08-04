@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼을 클릭하면 카운트 값이 증가하는 프로그램을 구현하시오. 버튼을 처음 클릭한 후 created에서 updated로 변하는 메시지 state를 출력하시오.</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>클릭 카운트: {{count}}</h1>
+        <h1>{{state}}</h1>
+        <button @click="count++">카운트 증가</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    count: 0,
+                    state: "created",
+                }
+            },
+            created() {
+            },
+            updated() {
+                this.state = "updated"
+            },
+
+        })
+    </script>
+</body>
+
+</html>
