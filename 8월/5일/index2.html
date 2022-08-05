@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #btn {
+            width: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>헬로월드</h1>
+        <div>
+            <button @click="isShow=true" :[key]=" btnId">서프라이즈 이벤트</button>
+        </div>
+        <div v-show="isShow">{{event}}</div>
+        <h1>롤러코스터</h1>
+        <div>
+            <label for="tall">키:</label>
+            <input type="text" name="tall" id="tall" v-model="tall">
+            <div v-if="tall<150">탑승 불가</div>
+            <div v-else-if="tall>=150">탑승 가능</div>
+            <div>
+                <a :href="url">탑승하러가기</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    tall: 0,
+                    key: "id",
+                    btnId: "btn",
+                    event: "오후 5시 불꽃놀이",
+                    isShow: false,
+                    url: "https://www.naver.com",
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #text {
+            font-size: 100px;
+        }
+
+        #btn1 {
+            width: 200px;
+            background-color: aqua;
+        }
+
+        #btn2 {
+            width: 300px;
+            background-color: darkorange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <label for="name">이름:</label>
+        <input type="text" name="name" id="name" v-model="name">
+        <div>[안녕하세요 {{name}}님 만나서 반갑습니다]</div>
+        <div>플레이월드에 오신것을 환영합니다.</div>
+        <hr>
+        <div>별명:</div>
+        <div v-show="isShow">{{sideName}}</div>
+        <hr>
+        <div>
+            <label for="age">나이: </label>
+            <input type="text" name="age" id="age" v-model="age">
+        </div>
+        <div>
+            <p>요금:</p>
+            <p v-if="age<6">3,000원</p>
+            <p v-else-if="age<19">23,000원</p>
+            <p v-else-if="age<70">34,000원</p>
+            <p v-else>무료</p>
+        </div>
+        <hr>
+        <div>
+            <a :href="url1">예매 사이트로 이동하기1</a>
+            <a :href="url2">예매 사이트로 이동하기2</a>
+        </div>
+        <hr>
+        <div :[key]="idValue">최대 할인 갑니다!!!</div>
+        <div>
+            <button :[key]="btnId1">여기 클릭 하세요!</button>
+            <button :[key]="btnId2">여기 클릭 하세요!</button>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    name: "",
+                    sideName: "박밍꼬",
+                    age: 0,
+                    isShow: false,
+                    idValue: "text",
+                    key: "id",
+                    btnId1: "btn1",
+                    btnId2: "btn2",
+                    url1: "https://www.naver.com",
+                    url2: "https://www.google.com",
+
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
