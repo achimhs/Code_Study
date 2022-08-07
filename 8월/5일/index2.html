@@ -19,7 +19,7 @@
     <div id="app">
         <h1>헬로월드</h1>
         <div>
-            <button @click="isShow=true" :[key]=" btnId">서프라이즈 이벤트</button>
+            <button @click="isShow=!isShow" :[key]=" btnId">서프라이즈 이벤트</button>
         </div>
         <div v-show="isShow">{{event}}</div>
         <h1>롤러코스터</h1>
