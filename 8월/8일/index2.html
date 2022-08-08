@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>r길문t</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>재고 현황</h2>
+        <div>
+            <label for=""> 상품 검색 </label>
+            <input type="text" name="" id="" v-model="product">
+        </div>
+        <h4>현재 상품 현황 : 당근, 수박, 참외, 토마토, 양파</h4>
+        <div>
+            <ul>
+                <li v-for="(s, index) in store" :key="s.name" v-if="product===s.name">상품 : {{s.name}}, 종류 : {{s.type}},
+                    재고 : {{s.count}}개</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    product: "",
+                    store: [
+                        {
+                            name: "당근",
+                            type: "채소",
+                            count: 11,
+                        },
+                        {
+                            name: "수박",
+                            type: "과일",
+                            count: 4,
+                        },
+                        {
+                            name: "참외",
+                            type: "과일",
+                            count: 6,
+                        },
+                        {
+                            name: "토마토",
+                            type: "채소",
+                            count: 15,
+                        }, {
+                            name: "양파",
+                            type: "채소",
+                            count: 7,
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

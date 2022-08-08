@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>럭셔리 부동산에 오신 걸 환영합니다!</h2>
+        <label for="search">지역 검색: </label>
+        <input type="text" name="" id="search" v-model="area">
+        <ul>
+            <li v-for="(i, index) in info" :key="i.SN" v-if="i.loc===area">위치는 '{{i.loc}}'이고, {{i.floor}}층짜리 아파트
+                {{i.amount}}억 급매 있습니다.</li>
+        </ul>
+        <div>
+            <div>{{ment}}</div>
+        </div>
+        <div>
+            <a :href="url">예약하러가기</a>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    area: "",
+                    ment: "고객님께 드리는 선물!! 검색해주세요!!",
+                    url: "https://www.naver.com",
+                    info: [
+                        { loc: "서울", floor: 7, amount: 50, SN: 1 },
+                        { loc: "서울", floor: 14, amount: 35, SN: 2 },
+                        { loc: "대전", floor: 5, amount: 7, SN: 3 },
+                        { loc: "대구", floor: 6, amount: 8, SN: 4 },
+                        { loc: "대구", floor: 17, amount: 14, SN: 5 },
+                        { loc: "부산", floor: 21, amount: 21, SN: 6 },
+                        { loc: "부산", floor: 11, amount: 11, SN: 7 },
+                    ]
+                }
+            },
+            updated() {
+                this.ment = "힝..속았지?";
+            },
+        })
+    </script>
+</body>
+
+</html>
