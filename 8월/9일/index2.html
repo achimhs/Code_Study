@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>로그인</h2>
+        <div>
+            <label for="userid">아이디</label>
+            <input type="text" name="userid" id="userid" v-model="userid">
+            <label for="userpw">비밀번호</label>
+            <input type="password" name="userpw" id="userpw" v-model="userpw">
+            <button @click="checkval">등록</button>
+            <div>{{username}}님 환영합니다.</div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    userid: "",
+                    userpw: "",
+                    username: "",
+                }
+            },
+            methods: {
+                checkval() {
+                    if (!this.userid) {
+                        alert("아이디 입력!");
+                        return;
+                    } else if (!this.userpw) {
+                        alert("비밀번호 입력!");
+                        return;
+                    } else if (this.userid != "id123") {
+                        alert("아이디가 틀렸습니다!");
+                        return;
+                    } else if (this.userpw != "pw123") {
+                        alert("비밀번호가 틀렸습니다!");
+                        return;
+                    } else {
+                        this.register();
+                    }
+                },
+                register() {
+                    alert("로그인 완료!");
+                    this.username = "고길동";
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
