@@ -7,4 +7,4 @@
 | 3     | :white_check_mark: | 227,228,229 | [디렉티브(v-model, v-bind, v-show, v-if)](8월/5%EC%9D%BC) | 2022-08-05 |
 | 4     | :white_check_mark: | 230,231     | [디렉티브(v-for)](8월/8%EC%9D%BC/)                        | 2022-08-08 |
 | 5     | :white_check_mark: | 232,233     | [디렉티브(v-if)](8월/9%EC%9D%BC/)                         | 2022-08-09 |
-| 6     | :white_check_mark: | 234,235     | [디렉티브(v-if)](8월/10%EC%9D%BC/)                        | 2022-08-10 |
+| 6     | :white_check_mark: | 234,235     | [filter, computed](8월/10%EC%9D%BC/)                      | 2022-08-10 |
