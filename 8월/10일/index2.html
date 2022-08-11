@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            요한이가 보낸 메시지: <input type="text" name="" id="" v-model="msg">
+        </p>
+        <p>
+            진호가 보낸 메시지: {{reversedMsg1}}
+        </p>
+        <p>
+            상혁이가 보낸 메시지: {{reversedMsg2}}
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    msg: "",
+                }
+            },
+            computed: {
+                reversedMsg1: function () {
+                    return this.msg + this.msg;
+                },
+                reversedMsg2: function () {
+                    return this.msg.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

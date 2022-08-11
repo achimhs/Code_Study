@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>짤랑이 뱅크(환율 계산 시스템)</h2>
+        <div>
+            금액: <input type="text" name="" id="" v-model="msg1">
+            전화번호: <input type="number" name="" id="" v-model="msg2">
+            <div>현재 금액은 {{msg1 | price | won("금액을 입력해보세요.")}}입니다.</div>
+        </div>
+        <div>
+            <button @click="trans">미국 환율</button>
+            <div>환율 적용된 금액 ${{msg3}}를 {{msg2|call}}로 보내드릴게요.</div>
+        </div>
+    </div>
+    <script>
+        Vue.filter("price", (value) => {
+            if (!value) return value;
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }),
+            Vue.filter("call", (value) => {
+                if (!value || !(value.length == 10 || value.length == 11)) return value
+                return value.replace(/^(\d{3})(\d{3,4})(\d{4})/g, '$1-$2-$3');
+            })
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    msg1: "",
+                    msg2: "",
+                    msg3: "",
+                }
+            },
+            methods: {
+                trans() {
+                    alert(Number(this.msg1) / 1307 + "달러 입니다.");
+                    this.msg3 = Number(this.msg1) / 1307;
+                }
+            },
+            filters: {
+                won(value, alternative) {
+                    if (value.length == 0) return alternative;
+                    return `${value}원`;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
