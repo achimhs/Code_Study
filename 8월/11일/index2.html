@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>할인가 계산</h2>
+        <div>
+            <p>상품의 원가를 입력하세요 : <input type="number" name="" id="" v-model="price"></p>
+            <p>원가 : {{price | won}}</p>
+            <p>A 마트 할인가(20%) : {{call1 | won}}</p>
+            <p>B 마트 할인가(30%) : {{call2 | won}}</p>
+        </div>
+    </div>
+    <script>
+        Vue.filter("won", (value) => {
+            if (!value) return value
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        })
+
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    price: 0,
+                }
+            },
+            computed: {
+                call1() {
+                    return this.price - (this.price * 0.2);
+                },
+                call2() {
+                    return this.price - (this.price * 0.3);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

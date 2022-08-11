@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>짤랑이 뱅크</h2>
+        <div>
+            <div>내가 가진 돈: <input type="number" name="" id="" v-model="korea"></div>
+            <div>
+                한국: {{korea|price}}원 | 미국: {{usa|price}}달러 | 중국: {{china|price}}위안
+            </div>
+
+        </div>
+    </div>
+    <script>
+        Vue.filter("price", (value) => {
+            if (!value) return value;
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        })
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    korea: 0,
+                    usa: 0,
+                    china: 0,
+                }
+            },
+            watch: {
+                korea: function (n, o) {
+                    this.usa = n / 1302;
+                    this.china = n / 193;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
