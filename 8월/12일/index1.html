@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>의류 관리 사이트</h2>
+        <div>
+            <form action="http://www.naver.com">
+                아이디: <input type="text" name="" id="" v-model="id" v-on:keyup="idCheck">
+                비밀번호: <input type="password" name="" id="" v-model="pw" v-on:keyup="pwCheck">
+                <button>확인</button>
+                <div>
+                    {{msg}}
+                </div>
+            </form>
+
+            <div>
+                <h3>분류: top, bottom, dress, shoes, acc</h3>
+                재고 검색: <input type="text" name="" id="" v-model="search">
+                <ul>
+                    <li v-for="(c, index) in cloths" :key="c.SN" v-if="search==c.kind">
+                        품목 {{c.kind}}의 재고는 {{c.stock}}개 남았습니다.
+                    </li>
+                </ul>
+            </div>
+            <form action="http://www.google.com">
+                <button v-on:click="bmethod1('안녕하세요 발주1')">발주1</button>
+                <button v-on:click="bmethod2($event,'안녕하세요 발주2')">발주2</button>
+                <button v-on:click.prevent="bmethod3">발주3</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    id: "",
+                    pw: "",
+                    msg: "",
+                    search: "",
+                    cloths: [{ kind: "top", SN: 0100, stock: 20 },
+                    { kind: "bottom", SN: 0200, stock: 11 },
+                    { kind: "dress", SN: 0300, stock: 5 },
+                    { kind: "shoes", SN: 040, stock: 34 },
+                    { kind: "acc", SN: 0500, stock: 13 },
+                    ],
+                }
+            },
+            methods: {
+                idCheck() {
+                    if (this.id.length < 5 || this.id.length > 12) {
+                        this.msg = "아이디는 5자리 이상 12자리 이하입니다.";
+                    } else {
+                        if (this.id === "admin") {
+                            this.msg = `${this.id}은 사용하실 수 없습니다.`;
+                        } else {
+                            this.msg = `${this.id}는 사용하실 수 있습니다.`;
+                        }
+                    }
+                },
+                pwCheck() {
+                    if (this.pw.length < 8 || this.pw.length > 20) {
+                        this.msg = "비밀번호는 8자리 이상 20자리 이하입니다.";
+                    } else {
+                        if (this.pw === this.id) {
+                            this.msg = `${this.pw}는 아이디와 동일합니다.`;
+                        } else {
+                            this.msg = `${this.pw}는 사용하실 수 있습니다.`;
+                        }
+                    }
+                },
+                bmethod1(msg) {
+                    alert(msg + " 신청되었습니다.");
+                },
+                bmethod2(e, msg) {
+                    if (e) e.preventDefault();
+                    alert(msg + " 신청되었습니다.");
+                    e.target.innerText = '발주완료';
+                },
+                bmethod3() {
+                    alert("안녕하세요 발주3 신청되었습니다.");
+                    event.target.innerText = '발주완료';
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

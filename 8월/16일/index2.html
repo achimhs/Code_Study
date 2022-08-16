@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>저희 홈페이지에 오신 것을 환영합니다!</h2>
+        <div>
+            아이디 <input type="text" name="" id="" v-model="userid">
+            <button v-on:click="ckID">중복 확인</button>
+        </div>
+        <div>
+            비밀번호 <input type="password" name="" id="" v-model="userpw">
+        </div>
+        <div>
+            비밀번호 확인 <input type="password" name="" id="" v-model="repw"> <button @click="ckPW">비밀번호 확인</button>
+        </div>
+        <div>
+            이름 <input type="text" name="" id="" v-model="username">
+        </div>
+        <div>
+            핸드폰 번호 <input type="text" name="" id="" v-model="phone">
+        </div>
+        <div>
+            이메일 <input type="text" name="" id="" v-model="email">
+        </div>
+        <div>
+            성별
+            <input type="radio" id="" value="male" v-model="ckGender"> 남자
+            <input type="radio" id="" value="female" v-model="ckGender"> 여자
+        </div>
+
+        <div>
+            <input type="checkbox" name="" id="" value="sms"> SMS 수신 동의
+            <input type="checkbox" name="" id="" value="email"> 이메일 수신 동의
+        </div>
+        <div>
+            <button @click="checkVal">회원 가입</button>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    userid: "",
+                    ckid: false,
+                    userpw: "",
+                    repw: "",
+                    ckpw: false,
+                    username: "",
+                    phone: "",
+                    email: "",
+                    ckGender: "",
+                    select: [],
+
+                }
+            },
+            methods: {
+                ckID() {
+                    if (this.userid === "admin") {
+                        alert("중복된 아이디입니다.");
+                    } else {
+                        alert("아이디 중복 학인이 완료 되었습니다.");
+                        event.target.innerText = "확인 완료";
+                        this.ckid = true;
+                    }
+                },
+                ckPW() {
+                    if (this.userpw === this.repw) {
+                        alert("비밀번호가 확인 되었습니다.");
+                        event.target.innerText = "확인 완료";
+                        this.ckpw = true;
+                    } else {
+                        alert("비밀번호가 다릅니다.");
+                    }
+                },
+                checkVal() {
+                    if (!this.userid) {
+                        alert("아이디 입력!");
+                    } else if (this.ckid == false) {
+                        alert("아이디 중복 검사 해주세요.");
+                    } else if (!this.userpw) {
+                        alert("비밀번호 입력!");
+                    } else if (this.ckpw == false) {
+                        alert("비밀번호 중복 검사 해주세요.");
+                    } else if (!this.username) {
+                        alert("이름 입력!");
+                    } else if (!this.phone) {
+                        alert("핸드폰 번호 입력!");
+                    } else if (!this.email) {
+                        alert("이메일 입력!");
+                    } else if (!this.ckGender) {
+                        alert("성별 체크!");
+                    } else {
+                        this.register();
+                    }
+                },
+                register() {
+                    alert(`${this.username}님 가입해주셔서 감사합니다.`);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
