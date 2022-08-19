@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>'괌'이 '좋아요'가 나오면 승리하는 게임</h2>
+    <div id="app">
+        <child-comp :country="country[parseInt(Math.random() * 5)]" :msg="msg[parseInt(Math.random() *5)]">
+        </child-comp>
+    </div>
+
+    <template id="ChildComp">
+        <div>
+            <h2>내가 가고 싶은 곳은 {{country}}: {{msg}}</h2>
+            <button @click="check">정답 확인</button>
+        </div>
+    </template>
+
+    <script>
+        const bus = new Vue();
+
+        Vue.component('ChildComp', {
+            props: {
+                'country': String, require: true,
+                'msg': {
+                    type: String, require: true
+                }
+            },
+            template: '#ChildComp',
+            methods: {
+                check() {
+                    // bus.$emit('countyCk', this.county);
+                    if (this.country == "괌" && this.msg == '좋아요') {
+                        alert("정답");
+                    } else {
+                        alert("실패");
+                    }
+                }
+            },
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                country: ['인도', '괌', '일본', '미국', '스위스'],
+                msg: ['좋아요', '싫어요', '싫어요', '싫어요', '싫어요'],
+            },
+
+        });
+    </script>
+</body>
+
+</html>

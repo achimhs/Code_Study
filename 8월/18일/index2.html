@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>사자성어 퀴즈</h2>
+        <div>'고생 하면서 부지런하고 꾸준하게 공부하는 자세'를 뜻하는 사자성어는?</div>
+        <br>
+        <child-comp :numbers="n" v-for="(n, index) in numbers" :key="index" :result="result[index]">
+        </child-comp>
+    </div>
+    </div>
+
+    <template id="MyTemp">
+        <div>
+            <button @click="select">{{numbers}}</button>
+            <span>{{result}}</span>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('ChildComp', {
+            props: {
+                'numbers': String,
+                'result': { type: String, require: true },
+            },
+            template: '#MyTemp',
+            methods: {
+                select() {
+                    if (this.numbers == 'c') {
+                        alert("정답입니다!");
+                    } else {
+                        alert("틀렸습니다!");
+                    }
+                }
+            },
+        })
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    numbers: ['a', 'b', 'c', 'd', 'e'],
+                    result: ['역지사지', '이심전심', '형설지공', '다다익선', '대기만성'],
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

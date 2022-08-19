@@ -42,6 +42,7 @@
 - watch는 값을 보고 있다가 new값과 old값을 이용할 수 있다.
 - computed는 새로운 함수를 만들어줘야하고 무조건 return이 필요하다.
 - 여기서 watch를 쓰라고 한 이유: computed를 하면 내부 변수를 최종값으로 쓰지 못하고 return으로만 해야하는데 watch는 내부 변수를 최종값으로 바꿀 수 있다. `this.usa = n / 1302;`
+- input의 type이 number라서 핕터 적용할 때 toString()으로 바꿔줘야 한다.
 
 ### [출력 예시 화면]
 
