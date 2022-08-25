@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>로또 번호 추천</h2>
+        <p>마지막 숫자는 보너스 숫자입니다.</p>
+        <child-comp1></child-comp1>
+        <child-comp2></child-comp2>
+    </div>
+
+    <template id="Temp1">
+        <div>
+            <button @click="send">추첨</button>
+        </div>
+    </template>
+
+    <template id="Temp2">
+        <div>
+            <div v-for="(l, index) in list" :key="index" v-if="index<7">
+                {{index+1}}번 추첨 숫자 : {{l}}
+            </div>
+        </div>
+    </template>
+
+    <script>
+        const bus = new Vue();
+
+        Vue.component('ChildComp1', {
+            template: '#Temp1',
+            data() {
+                return {
+                    count: 1,
+                }
+            },
+            methods: {
+                send() {
+                    bus.$emit('updateChild2', this.count);
+                    ;
+                }
+            },
+        })
+
+        Vue.component('ChildComp2', {
+            template: '#Temp2',
+            data() {
+                return {
+                    list: [],
+                };
+            },
+            methods: {
+                updateChild2(data) {
+                    this.list.push(Math.floor(Math.random() * 45) + 1);
+                },
+            },
+            created() {
+                bus.$on('updateChild2', this.updateChild2);
+            },
+        });
+
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+
+</html>

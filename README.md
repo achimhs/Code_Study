@@ -12,3 +12,5 @@
 | 8     | :white_check_mark: | 238,239       | [event, class/style binding](8월/12%EC%9D%BC/)            | 2022-08-12 |
 | 9     | :white_check_mark: | 240,241       | [input binding](8월/16%EC%9D%BC/)                         | 2022-08-16 |
 | 10    | :white_check_mark: | 241(다시),242 | [component간 통신](8월/18%EC%9D%BC/)                      | 2022-08-18 |
+| 11    | :white_check_mark: | 243,244       | [axios, promise](8월/22%EC%9D%BC/)                        | 2022-08-22 |
+| 12    | :white_check_mark: | 245,246       | [async, await](8월/25%EC%9D%BC/)                          | 2022-08-25 |

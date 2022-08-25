@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=r, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>프로듀스 31</h2>
+        <h4>당신의 베라 아이스크림에게 투표하세요!</h4>
+
+        <subject-comp v-on:addtotcount="addTotalCount" title="엄마는 외계인"></subject-comp>
+        <subject-comp v-on:addtotcount="addTotalCount" title="초코나무숲"></subject-comp>
+        <subject-comp v-on:addtotcount="addTotalCount" title="뉴옥 치즈케이크"></subject-comp>
+        <subject-comp v-on:addtotcount="addTotalCount" title="체리 쥬빌레"></subject-comp>
+        <subject-comp v-on:addtotcount="addTotalCount" title="기타"></subject-comp>
+        <h2>총 투표수: {{total}}표</h2>
+    </div>
+
+    <script>
+        Vue.component('SubjectComp', {
+            data() {
+                return {
+                    count: 0,
+                }
+            },
+            props: {
+                'title': {
+                    type: String, require: true
+                }
+            },
+            template: `<button @click="addCount">{{title}} : {{count}}표</button>`,
+            methods: {
+                addCount() {
+                    this.count += 1;
+                    console.log(this.count);
+                    this.$emit('addtotcount');
+                }
+            },
+        })
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    total: 0,
+                }
+            },
+            methods: {
+                addTotalCount() {
+                    this.total += 1;
+                    if (this.total == 10) {
+                        alert("투표 종료~");
+                    }
+                    console.log(this.total);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
