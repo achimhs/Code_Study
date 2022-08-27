@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        const URL = "https://jsonplaceholder.typicode.com/todos";
+
+        // async function getTodo(URL) {
+        //     const response = await axios.get(URL);
+        //     console.log(response);
+        //     const id = response.data[4].id;
+        //     const todo = await axios.get(`${URL}/${id}`);
+        //     alert("찾으시는 id " + id + "의 title은 " + todo.data.title + "입니다.");
+        // }
+        // getTodo(URL);
+
+        axios.get(URL)
+            .then((response) => {
+                return response.data[4].id;
+            })
+            .then((id) => {
+                return axios.get(`${URL}/${id}`);
+            })
+            .then((todo) => {
+                alert("찾으시는 id " + todo.data.id + "의 title은 " + todo.data.title + "입니다.");
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                console.log("검색 완료");
+            })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
