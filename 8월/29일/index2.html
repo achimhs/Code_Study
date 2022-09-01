@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길문</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="result">
+            <table>
+                <tr>
+                    <th>번호</th>
+                    <th>명칭</th>
+                    <th>공공기관 휴일여부</th>
+                    <th>날짜</th>
+                </tr>
+                <tr v-for="(i, index) in infos" :key="index">
+                    <td>{{index+1}}</td>
+                    <td>{{i.dateName}}</td>
+                    <td>{{i.isHoliday}}</td>
+                    <td>{{i.locdate}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = "OheAZuRoeZTLglINUY19swZ7ioVz6WgPyE10pZuNXT%2BFb%2FOMQ%2FnnjdFxmtfcErUHlPGzxM4fkRFeYqfJknLOmw%3D%3D";
+        const address = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo?solYear=2022&solMonth=09&ServiceKey=" + API_KEY;
+
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    infos: [],
+                }
+            },
+            created() {
+                axios.get(address)
+                    .then((response) => {
+                        console.log(response.data.response.body.items.item);
+                        this.infos = response.data.response.body.items.item;
+                    })
+            }
+        })
+    </script>
+</body>
+
+</html>

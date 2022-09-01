@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소문</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="result">
+            <table>
+                <tr>
+                    <th>번호</th>
+                    <th>상권명</th>
+                    <th>시도명</th>
+                    <th>시군구</th>
+                    <th>행정동</th>
+                    <th>상권 중분류</th>
+                </tr>
+                <tr v-for="(i, index) in info" :key="index">
+                    <td>{{index+1}}</td>
+                    <td>{{i.bizesNm}}</td>
+                    <td>{{i.ctprvnNm}}</td>
+                    <td>{{i.signguNm}}</td>
+                    <td>{{i.adongNm}}</td>
+                    <td>{{i.indsMclsNm}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API = "OheAZuRoeZTLglINUY19swZ7ioVz6WgPyE10pZuNXT%2BFb%2FOMQ%2FnnjdFxmtfcErUHlPGzxM4fkRFeYqfJknLOmw%3D%3D";
+
+        const address = "https://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong?&pageNo=1&numOfRows=100&divId=signguCd&key=41210&type=json&serviceKey=" + API;
+
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    info: [],
+                }
+            },
+            created() {
+                axios.get(address)
+                    .then((response) => {
+                        console.log(response.data.body.items);
+                        this.info = response.data.body.items;
+                    })
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -15,3 +15,4 @@
 | 11    | :white_check_mark: | 241,242       | [component간 통신](8월/19%EC%9D%BC/)                      | 2022-08-19 |
 | 12    | :white_check_mark: | 243,244       | [axios, promise](8월/22%EC%9D%BC/)                        | 2022-08-22 |
 | 13    | :white_check_mark: | 245,246       | [async, await](8월/25%EC%9D%BC/)                          | 2022-08-25 |
+| 14    | :white_check_mark: | 247,248       | [apt list, board](8월/29%EC%9D%BC/)                       | 2022-08-29 |

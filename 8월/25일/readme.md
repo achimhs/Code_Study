@@ -70,6 +70,7 @@
     <최종 출력>
 
     ![](../img/8_25_4.jpg)
+    
     → 에러를 없애려면? URL을 https://jsonplaceholder.typicode.com/todos로 변경하시오.
 
 ### [문제 포인트]
