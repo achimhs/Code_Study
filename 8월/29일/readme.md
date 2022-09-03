@@ -18,6 +18,8 @@
 
 - 상세기능 목록에서 ‘행정동 단위 상가업소 조회’를 참고한다.
 
+  ![](../img/8_29_11.jpg)
+
 4. CORS 켜기
 
 5. body부분
@@ -52,7 +54,7 @@
   - created
 
     - axios로 address를 가져온다.
-    - console.log로 `response.data.response.body.items.item`를 콘솔창에 출력해 데이터가 잘 들어갔는지 확인해본다.
+    - console.log로 `response.data.body.items`를 콘솔창에 출력해 데이터가 잘 들어갔는지 확인해본다.
 
     ![](../img/8_29_5.jpg)
 
